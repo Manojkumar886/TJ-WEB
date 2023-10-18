@@ -1,0 +1,465 @@
+ ORACLE PATH and APP Execution
+------------------------------------------------
+
+I)SQL Developer Dowload(437MB)
+
+1.Create Oracle Account ,then downloaded sql developer current version
+2.got a extract file 	--->	Install a sql devloper
+3.open  the folder	--->	sql devloper file will be opened
+
+II)
+1.ORACLE Database downloded(316MB)
+2.Chrome			--->	live version or best version( oracle 11g xe prior release)
+3.Installed		--->	ExtractFile----->Open Disk1 folder--->setup folder please right click---->run as administractive---->next all->give to password types(anyname)(2time)
+				--->	finish
+III)
+Oracle connection checking
+
+1.Run as SQL commandliine
+2.connect sys as sysdba
+password : sysdba(o/p:connected)
+3.create user username identified by password;
+4.enter button :(o/p :user created)
+5.granted some privileges(comand : grant all privileges to username;
+(o/p: granted successfully)
+
+IV)
+1.open sql developer 
+2.click to top of  the plus symbol
+3.choose any one name
+4.username ,password
+5.test button (show: success)
+6.save button and then connect button click
+7.connected successfully
+
+
+
+ORACLE
+------------
+DDL-Data Definition Languages
+---------------------------------------------
+1.CREATE
+	i)create table studentdetails(student_name varchar2(200)not null,student_age number(3)not null);
+	ii)select * from user_tables; 
+2.ALTER
+	i)ADD
+		alter table studentdetails add student_city varchar2(20)not  null;
+		
+	ii)MODIFY
+		alter table studentdetails modify student_city varchar2(50)null;	
+		DESCRIBE table _name 	- list all column with datatypes			
+3.RENAME
+	i) column name changed		-alter table studentdetails RENAME column student_city TO city_Name;
+	ii)table name changes		-alter table studentdetails RENAME TO zealousstudentdetails;
+4.TRUNCATE
+	i)delete all values in tables 	-truncate table studentdetails      (used to remove/delete entire datas in a table
+
+5.DROP
+	i) column delete 	- alter table studentdetails drop column student_city;
+	ii) table delete		- drop table studentdetails;	
+
+DML-DATA MANIPULATION LANGUAGES
+---------------------------------------------------------------
+END OF DML WURIES YOU MUCH BE USED COMMIT KEYWORD(COMMIT;)
+
+1.INSERT
+	i)insert into studentdetails (student_name,student_age,student_city) values ('manoj',21,'Salem');
+	ii) multi values at same time
+		insert all
+			into studentdetails(student_name,student_age,student_city) values ('manoj',21,'Salem')
+			into studentdetails(student_name,student_age,student_city) values ('manoj',21,'Salem')
+			into studentdetails(student_name ) values('Kalaiselvi')
+		select * from dual;
+			
+2.UPDATE
+
+	i) update studentdetails set studentname='Kavitha' where student_age=21 AND student_city IS NULL
+	ii) multirows update
+		update studentdetails set student_city=chennai,student_name=swetha where student_age>=21;
+
+3.DELETE
+	This command is used to DELETE exiting records in database/Table
+
+		i)delete from tablename where emp_id=5;   Delete from emp_details where emp_id=15;
+		ii) delete from emp_details emp_id=12 AND emp_name='manoj';
+		iii) delete from emp_details - delete all values in table(same as truncate)
+
+4.MERGE
+
+	its often  called an "upsert"(update+insert)
+	
+	syntex: merge into target_table using source table on search_condition 
+			when mached then update set col=value1,col2=value2,.....
+				when not matches then insert (col1,col2 ) values (value1,vlaue2)
+
+	query: merge into test2 (T2)
+			using test1(t1) on (T1.A=T2.A)
+			when matched then update set T2.B=T1.B
+			when not matched then insert (T2.A,T2.B) values (T1.A,T2.B);  
+
+
+
+AGGREGATE FUNCTION
+-----------------------------------
+1.count
+	select count(*) from emp;
+	select count(manager_id) from emp;
+2.max
+	select max(salary) from emp;
+3.min
+	select min(salary) from emp;
+4.sum
+	select sum(salary) from emp
+5.avg
+	select avg(salary) from emp
+
+CLAUSES
+--------------Constraints:
+Constriants are used to restrict column data or to set rules defined in oracle tables to ensure data integrity.
+these rules are enforced placed foe each column or set of clumn
+1.PRIMARY KEY
+	*its accept no duplicatr and no null values(not allowed values)
+	*a table can have only one primary key
+	* oracle internally create unique index to prevent duplicates in the column values
+	*multiple columns can be clubbed under a composite primary key
+	
+	create table table _name (column[datatype] CONSTRIANT con_name PRIMARY KEY
+
+	check all tables(constraints)- select * from USER_CONSTRAINTS where table_name='';
+	 
+	create table emp_one (emp_id number(6) constraints e_pk PRIMARY  KEY);
+
+2.UNIQUE KEY
+	* it accepts no duplicates and accepts null values
+	*multiple unique key can be defined pertable
+	* composite columns key should be defined at the table level constraints
+	COLUMN LEVEL CONSTRAINTS
+	--------------------------------------------
+	create table table_name (column [datatype] constraint <constraints name> UNIQUE
+	
+	TABEL LEVEL CONSTRAINTS
+	---------------------------------------
+	create table table_name (column [datatype],......,constraint emp_uk UNIQUE (EMP_ID));
+3.NOT NULL
+4.CHECK
+	*check constrain allow to impose a conditional rule on a column,which must be validated before data is inserted into the column.
+	*Oracle allwos a single column to have more than one check constriants
+	COLUMN LEVEL
+	-----------------------		
+	create table table_name(column[datatype] constriants CHECK (COLUMN_NAME 	condition)
+		
+5.FOREIGN KEY
+	1. Parent-child relationship) the data in oncolumn of a table must match from another table
+	2.the referenced table is called the parent table while the table with the foreign key is called the child table
+		!)create table product(product_id number(5)not null primary key,name varchar2(20)not null,
+		price number(10)not null);
+
+		ii)create table orders(product_id number(5)not  null,quantity number(10)not null, 
+			CONSTRAINT order_pk FOREIGN KEY (product_id) 
+			REFERENCES product(product_id));
+		
+create table product(product_id number(5)not null primary key,name varchar2(20)not null,
+price number(10)not null);
+create table orders(product_id number(5)not  null,quantity number(10)not null, 
+CONSTRAINT order_pk FOREIGN KEY (product_id) 
+REFERENCES product(product_id));
+
+insert all 
+into product values (21,'Burger',25)
+into product values (22,'Pizza',100)
+into product values (23,'iceCreams',35)
+into product values (24,'Cold Drinks',15)
+into product values (25,'Freshjuice',40)
+select * from dual;
+
+drop table orders;
+
+insert all
+into orders values (23,6)
+into orders values (25,1)
+into orders values (22,3)
+into orders values (21,10)
+into orders values (24,8)
+select * from dual;
+
+select  * from all_tables where owner='MANOJ123';
+select * from user_constraints where table_name='orders';
+
+select * from orders;
+select * from product;
+alter table orders drop CONSTRAINT order_pk ;
+
+delete from product where product_id=23;
+drop table orders;
+insert all
+into orders values (23,6)
+into orders values (25,1)
+into orders values (22,3)
+into orders values (21,10)
+into orders values (24,8)
+select * from dual;
+
+select  * from all_tables where owner='MANOJ123';
+select * from user_constraints where table_name='orders';
+
+select * from orders;
+select * from product;
+alter table orders drop CONSTRAINT order_pk ;
+
+delete from product where product_id=23;
+
+6.DELETE CASCADE
+---------------------------
+	This is an option to specify whether you want rows deleted in a child table when corresponding rows are deleted in the parent table
+
+syntex
+--------
+create table tablename (column1 datatype,
+constraint constraintname froeign key (column name)
+reference <reference tablname> (columnname)
+on delete cascade);
+
+Example
+-----------
+create table orders(product_id number(5)not  null,quantity number(10)not null, 
+CONSTRAINT order_pk FOREIGN KEY (product_id) 
+REFERENCES product(product_id)
+on delete cascade);
+
+
+DCL-DATA CONTROL LANGUAGE
+-------------------------------------------------
+1.GRANT
+2.REVOKE
+
+get a user details
+--------------------------
+select USER FROM DUAL;
+select * from ALL_USERS;
+select * from ALL_Tables where OWNER='AB'; (get a all tbale in one user)
+how to get passwprd
+-------------------------
+select password from dba_users where username = 'WHATEVER'
+
+user creation
+-------------------
+CREATE USER user_name IDENTIFIED BY password;
+grant connect ,resource to username;
+
+PERMISSION one table to another (particular)table
+-----------------------------------------------------------
+GRANT SELECT ON <tablename> to <username>; or 
+GRANT Select,insert,uodate,delete on tablename to username;
+
+GRANT Select ,insert,update,delete on table to PUBLIC;
+
+ select* from username.tablename;
+
+REVOKE
+------------    
+return the privileges option(delete) 
+REVOKE SELECT ON tablename to username;
+REVOKE INSERT,SELECT,UPDATE,DELETE  on tablename FROM PUBLIC;
+REVOKE All ON tablename to username;
+ 
+ROLE
+--------
+create role rolename;
+grant rolename to username1,username2;
+
+GRANT SELECT on productes_tablename to T7-rolename;
+
+TCL-TRANSACTION CONTROL LANGUAGES
+---------------------------------------------------------------
+1.COMMIT
+	*used to end your current transaction
+	* make the changes permanent in datatbase
+	
+	
+2.ROLLBACK
+	insert into A_2 values 1;
+	commit;
+	insert into a_2 values2;
+	rollback;
+
+
+3.SAVEPOINT
+
+insert into test1 values(5,'e');
+commit;
+insert into test1 values(6,'f');
+insert into test1 values(7,'g');
+insert into test1 values(8,'h');
+savepoint x; 
+insert into test1 values(5,'e');
+savepoint y;
+insert into test1 values(6,'f');
+insert into test1 values(7,'g');
+insert into test1 values(8,'h');
+savepoint z;
+
+rollback to z; (deleted after added z savepoint values)s
+
+LEFTJOIN
+-------------
+
+select  e.emp_id,e.firstname,d.dept_id,d.dept_name
+from emp1 e LEFT JOIN   dept1 d
+on e.dept_id=d.dept_id;
+1.Distinct
+	Oracle DISTINCT clause is used to remove the duplicate records from the result set.	
+	select  distinct name,age,year from emp_details where  name="MaNoj";
+
+2.ORDER BY
+	 ORDER BY Clause is used to sort or re-arrange the records in the result set.(desc,asc)
+	select * from emp_details ORDER BY age; (default ascending order) or asc
+	select * from emp_details ORDER By first_name desc;
+
+2.GROUP BY
+	*group by used to group rows that have the same values
+	 Oracle GROUP BY clause is used with SELECT statement to collect data from multiple records and group the results by one or more columns.
+	select colum1,column2
+	from table_name
+	group by coumn1,coumn2
+	having condition;
+
+	select dept_id from employee
+	group  by dept_id;
+	
+	select  dept_id,max(salary) from employee
+	group by dept_id;
+
+	
+	!)sum
+		select  item ,sum(sale) as "total sales count) from emp_details GROUP BY item;
+	ii)count
+		select state,count(*) as ""number of count"  from emp_details where salary>10000 group by state;
+	iii)minimum
+		select department ,min(salary) as "lowest salary" from emp_details GROUP BY department
+
+3.HAVING
+	Oracle, HAVING Clause is used with GROUP BY Clause to restrict the groups of returned rows where condition is TRUE.
+	!)
+
+SEQUENCE
+---------------
+sequnce is a dtabase object that is used to generate unique numbers
+mainly used to generate the sequence to the pk columns
+it can be used in any columns of any table
+can be created even if there is no table
+
+ATTRIBUTES
+----------------
+dual-one row and one column
+1.nextval
+select sequnecname.nextval from dual;
+2.currval
+select seqname.currval from dual;
+
+syntex--
+------------
+CREATE SEQUENCE sequence_name
+START WITH start_value
+INCREMENT BY incre_vale
+MINVALUE minval   ---not minvalue
+MAXVALUE maxval	----not MAXVALUE
+CYCLE 		---no CYCLE
+CACHE 		---no CACHE
+ORDER		-- no ORDER
+		QUERY
+		----------
+		create SQQUENCE seql
+		START WITH 1
+		INCREMENT BY 2
+		MINVALUE 1
+		MAXVALUE 3
+
+select seq1.nextval  from dual;
+select seq1.currval from dual;
+drop sequence seq_name;
+
+get a cache value
+-----------------
+select ceil (maxvalue -minvalue)/abs(increment);
+selecy ceil (3-1)/abs(1) from dual;
+
+	create SQQUENCE seql
+		START WITH 1
+		INCREMENT BY 2
+		MINVALUE 1
+		MAXVALUE 3
+		cycle
+		CACHE 2;
+
+ALTER SEQUENCE(start with 1(cannot altered)
+----------------
+alter sequence seq1
+increment by incrvalue
+maxvalue 
+cycle
+cache
+order/noorder;
+
+sequence insert in table
+-----------------------
+insert into abc(a,b,c) values (seq1.nextval,2,45);
+
+	
+Queries Example
+-----------------------
+create table emp_details(emp_id number not null,emp_name varchar2(100)not null,
+emp_address varchar2(100)not null,emp_salary number not null);
+select * from empdetails;
+DESCRIBE emp_details;
+alter table emp_details add emp_age number not null;
+alter table emp_details rename to empdetails;
+alter table empdetails DROP column emp_salary;
+insert into empdetails(emp_id,emp_name,emp_address,emp_age)
+VALUES(1001,'Annamalai','Salem',89);
+insert all 
+into empdetails(emp_id,emp_name,emp_address,emp_age)
+VALUES(1004,'Pavithra','junction',30) 
+into empdetails(emp_id,emp_name,emp_address,emp_age)VALUES
+(1005,'Mohanavel','Ariyalur',24)
+into empdetails(emp_id,emp_name,emp_address,emp_age)VALUES
+(1006,'surenthiran','Mallur',27)
+select * from dual;
+
+update empdetails set emp_age=100 where emp_id=1001;
+
+update empdetails set emp_address='chennai' where emp_age>=30;
+
+DELETE FROM empdetails where emp_address='Salem';
+
+delete from empdetails where emp_age>=30 AND emp_name='Manojkumar';
+
+DELETE FROM empdetails;
+TRUNCATE table empdetails;
+commit;
+
+
+create table test1 (A number not null,B varchar2(1)not null);
+create table test2 (A number not null,B varchar2(1)not null);
+
+insert all
+into test1 (A,B) VALUES (1,'a')
+into test1 (A,B) VALUES (2,'b')
+into test1 (A,B) VALUES (3,'c')
+into test1 (A,B) VALUES (4,'d')
+select * from dual;
+insert all
+into test2 (A,B) VALUES (1,'x')
+into test2 (A,B) VALUES (2,'y')
+into test2 (A,B) VALUES (3,'z')
+select * from dual;
+
+select * from user_tables;
+
+select * from test1;
+SELECT * from test2;
+
+MERGE into test2
+USING test1 ON (test1.A=test2.A)
+when matched then update set test2.B=test1.B
+when not matched then insert (test2.A,test2.B) values (test1.A,test1.B);
+
