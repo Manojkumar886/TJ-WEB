@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+</head>
+<body bgcolor="lightgreen">
+<!-- input types (text,password,email,file,radio,checkbox,submit,cancel,textarea,select,option,) -->
+    <fieldset>
+        <legend>DETAILS OF STUDENT</legend>
+        <form align="center" >
+            <font color="red">
+                <h2 >Personal Details</h2>
+            </font> 
+            <label>Name:</label>
+            <input placeholder="Enter your name" type="text" />
+            <br>
+            <br>
+            <label>PASSWORD</label>
+            <input type="password" >
+            <br>
+            <br>
+            <label>Email id</label>
+            <input type="email" placeholder="abc@gmail.com" >
+            <br>
+            <br>
+            <label>Gender</label>
+            <input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female
+            <br/>
+            <br/>
+            <font color="red">
+                <h2 >Educational Qualification</h2>
+            </font> 
+            <label>Degree:</label>
+            <select>
+                    <option selected hidden>----Select Group----</option>
+                    <option>BCA</option>
+                    <option>BSC</option>
+                    <option>B.COM</option>
+                    <option>BBA</option>
+            </select>
+            <br>
+            <br>
+            <label>Engineering:</label>
+            <select>
+                <option selected hidden>----Select Group----</option>
+                <option>MECH</option>
+                <option>CSE</option>
+                <option>IT</option>
+                <option>EEE</option>
+                <option>MET</option>
+        </select>
+        <br>
+        <br>
+        <label>Hobbies:</label>
+        <input type="checkbox" />Playing Chess
+        <input type="checkbox" />Reading Books
+        <br>
+        <br>
+        <font color="red">
+            <h2 >Address</h2>
+        </font> 
+        <textarea></textarea>
+        <br>
+        <br>
+        <label>Attach Resume</label>
+        <input type="file" />
+        <br>
+        <br>
+        <button type="submit">SUBMIT</button>
+        <button type="reset">CANCEL</button>
+        </form>
+    </fieldset>
+</body>
+</html>
