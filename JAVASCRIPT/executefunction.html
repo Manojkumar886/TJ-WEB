@@ -1,0 +1,52 @@
+<!-- A JavaScript function is a block of code designed to perform a particular task.
+
+A JavaScript function is executed when "something" invokes it (calls it).
+syntex:
+
+functionkeyword funcname( param1,param2)
+{
+    //statements
+}
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script function</title>
+</head>
+<body>
+    <h1 align="center" id="withcss" ondblclick="usingcss()">function</h1>
+    <p onclick="myfirstfucntion()" align="center">click</p>
+    <ol onclick="tagname()">
+        web technologies
+        <li id="HTML">HTML</li>
+        <li>CSS</li>
+        <li>BOOTSTRAP</li>
+        <li>JAVA SCRIPT</li>
+    </ol>
+    <script>
+        function myfirstfucntion()
+        {
+            alert(" A JavaScript function is executed when 'something' invokes it (calls it).")
+        }
+        function usingcss()
+        {
+            let water=document.getElementById('withcss');
+            water.style.color="yellow";
+            water.style.textTransform='uppercase';
+        }
+        function tagname()
+        {
+            var getting=document.getElementsByTagName('li' )[3];
+            getting.style.backgroundColor='red';
+
+            var getting1=document.getElementById('HTML');
+            getting1.style.textDecoration='underline';
+            getting1.style.color='green'
+        }
+    </script>
+    
+</body>
+</html>
