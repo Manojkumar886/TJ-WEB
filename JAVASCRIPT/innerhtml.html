@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innerhtml</title>
+</head>
+<body>
+    <button onclick="document.getElementById('getdate').innerHTML=Date()">
+        show current Date
+    </button>
+    <br>
+    <span id="getdate"></span>
+
+    <br>
+    <h1>innerHTML is inderchange a particular content</h1>
+
+    <script>
+        // mydate="28/12/2023";
+        let process="innerHTML is a property of every HTML element that defines its content and HTML code. It can be used to get or set the HTML content of an element, such as";
+        document.getElementsByTagName('h1')[0].innerHTML=process;
+    </script>
+</body>
+</html>

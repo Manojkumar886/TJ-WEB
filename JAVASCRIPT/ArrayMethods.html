@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my array methods</title>
+</head>
+<body>
+    <script>
+        // let chocolatename =["kitkat","Cadbury","Amul Dark","Munch"];
+        // alert(chocolatename);
+
+        let chocolatelist =new Array();
+
+        chocolatelist.push("Cadbury");
+        chocolatelist.push("Kitkat");
+        chocolatelist.push("Amul");
+        chocolatelist.push("FiveStar");
+        chocolatelist.push("Milkybar");
+        chocolatelist.unshift("Diary");//add first
+        chocolatelist.shift();//delete first element
+        chocolatelist.pop();// only delete last element
+
+        chocolatelist.sort();
+        for( i=0;i<chocolatelist.length;i++)
+        {
+            alert(chocolatelist[i]);
+        }
+        
+    //     function listall(getting)
+    //     {
+    //         alert(getting)
+    //     }
+    //    chocolatelist.map(listall) 
+
+
+       alert(chocolatelist.toString())// converting array to string
+
+
+    //    different b/w array and object
+
+        let mydetails=[" manojkumar","Namakkal",23,166.9];//array
+        // alert(typeof(mydetails))
+        // object
+        let studentdetails={ studentname :"manoj" , place:" namakkal",age:23};
+        // alert(studentdetails.age)
+
+        // flat ()-- 2 -d array changeing single array
+        // const temp=[[1,2],[56,88],[99,6]];
+        // const ts=temp.flat();//1,2,56,88,99,6
+        // alert(ts);
+
+
+        // splice( startingpoint ,howmany values added no,val1,val2,val3) ---> 
+        // mydetails.splice(2,3,"water","air","okok");
+        // alert(mydetails)
+
+        // mydetails.splice(3,0,24,89,68);
+        // alert(mydetails)
+
+        // mydetails.splice(2,2);
+        // alert(mydetails);
+    </script>
+</body>
+</html>
