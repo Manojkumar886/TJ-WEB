@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Username</label><br>
+    <input type="text" id="username"  placeholder="enter your username"/><br>
+    <label>MailID</label><br>
+    <input type="email" id="emailinput"  placeholder="enter your emailid"/><br>
+    <button id="insertlocal" onclick="addkeyvalue()">Add Localstorage</button><br>
+    <script>
+        
+        function addkeyvalue()
+        {
+            const keyclass=document.getElementById('username').value;
+            const valueclass=document.getElementById('emailinput').value;
+            sessionStorage.setItem(keyclass,valueclass);
+            location.reload();
+        }
+    </script>
+    
+</body>
+</html>

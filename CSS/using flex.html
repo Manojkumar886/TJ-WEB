@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container
+        {
+            display: flex;
+            
+        }
+        .para1
+        {
+            background-color: aquamarine;
+            flex: 1;
+            order: 3;
+        }
+        .para2
+        {
+            background-color: rgb(20, 208, 145);
+            flex: 1;
+            order: 2;
+        }
+        .para3
+        {
+            background-color: rgb(0, 101, 67);
+            flex: 3;
+            order: 1;
+        }
+        .outerbox
+        {
+            background-color: beige;
+            display: flex;
+            min-height: 400px;
+            flex-wrap: wrap;  
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .box
+        {
+            background-color: blue;
+            width: 150px;
+            height: 150px;
+            border: 2px solid salmon;
+        }
+        .box1
+        {
+            /* align-self: flex-start; */
+        }
+        .box4
+        {
+            /* flex:1; */
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="outerbox">
+        <div class="box box1"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box box4"></div>
+    </div>
+
+
+
+    <div class="container">
+        <p class="para1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim voluptate sit eum, totam iste nam minus quasi alias! Necessitatibus accusamus recusandae molestias esse numquam neque nihil deserunt, ipsam aperiam, nostrum culpa aspernatur autem unde et, dolorum est optio quos. Adipisci, hic. Harum debitis modi esse!</p>
+
+        <p class="para2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim voluptate sit eum, totam iste nam minus quasi alias! Necessitatibus accusamus recusandae molestias esse numquam neque nihil deserunt, ipsam aperiam, nostrum culpa aspernatur autem unde et, dolorum est optio quos. Adipisci, hic. Harum debitis modi esse!</p>
+
+        <p class="para3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim voluptate sit eum, totam iste nam minus quasi alias! Necessitatibus accusamus recusandae molestias esse numquam neque nihil deserunt, ipsam aperiam, nostrum culpa aspernatur autem unde et, dolorum est optio quos. Adipisci, hic. Harum debitis modi esse! Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, facere!
+        </p>
+    </div>
+    
+</body>
+</html>
